@@ -2,6 +2,14 @@ version: '3.8'
 
 services:
   rust:
+    container_name: rust_shig
+    env_file:
+      - .env
+    environment:
+      - DISPLAY=$DISPLAY
+      - WAYLAND_DISPLAY=$WAYLAND_DISPLAY
+      - XDG_RUNTIME_DIR=/tmp
+      - PULSE_SERVER=$PULSE_SERVER
     build:
       context: .
       dockerfile: docker/rust/Dockerfile
@@ -10,6 +18,12 @@ services:
     volumes:
       - .:/workspace
       - rust-target:/workspace/target
+      - type: bind
+        source: /tmp/.X11-unix
+        target: /tmp/.X11-unix
+      - type: bind
+        source: "${XDG_RUNTIME_DIR}/wayland-0"
+        target: /tmp/wayland-0
 
 volumes:
   rust-target:
