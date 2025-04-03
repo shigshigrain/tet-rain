@@ -42,8 +42,9 @@
                 "editorconfig.editorconfig",
                 "matklad.rust-analyzer",
                 "vadimcn.vscode-lldb",
-                "bungcip.better-toml",
-                "serayuzgur.crates"
+                "fill-labs.dependi",
+                "tamasfe.even-better-toml",
+                "ms-azuretools.vscode-docker"
             ]
         }
     }
